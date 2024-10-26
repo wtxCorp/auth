@@ -1,0 +1,174 @@
+{
+  "caracteristicas_autonomia": {
+    "diversificacion_ingresos": {
+      "trabajador_dependiente": {
+        "elementos": [
+          "Trabajo principal + horas extras",
+          "Bonos por desempeño",
+          "Beneficios laborales adicionales"
+        ],
+        "ejemplo": "Vendedor con sueldo base + comisiones"
+      },
+      "contratista_independiente": {
+        "elementos": [
+          "Múltiples clientes simultáneos",
+          "Diferentes proyectos",
+          "Servicios complementarios"
+        ],
+        "ejemplo": "Consultor IT que trabaja para varias empresas"
+      },
+      "creador_negocio": {
+        "elementos": [
+          "Diferentes líneas de productos",
+          "Múltiples canales de venta",
+          "Servicios complementarios"
+        ],
+        "ejemplo": "Restaurante con delivery + catering + clases de cocina"
+      },
+      "inversionista": {
+        "elementos": [
+          "Portafolio diversificado",
+          "Diferentes clases de activos",
+          "Múltiples sectores"
+        ],
+        "ejemplo": "Inversión en acciones + bienes raíces + bonos"
+      }
+    },
+    "control_tiempo": {
+      "trabajador_dependiente": {
+        "elementos": [
+          "Horario flexible",
+          "Teletrabajo",
+          "Vacaciones planificadas"
+        ],
+        "ejemplo": "Profesional con horario híbrido"
+      },
+      "contratista_independiente": {
+        "elementos": [
+          "Gestión propia del tiempo",
+          "Selección de proyectos",
+          "Periodos de descanso flexibles"
+        ],
+        "ejemplo": "Freelancer que elige sus horarios"
+      },
+      "creador_negocio": {
+        "elementos": [
+          "Delegación de tareas",
+          "Sistemas automatizados",
+          "Equipo de trabajo"
+        ],
+        "ejemplo": "Dueño que establece procesos"
+      },
+      "inversionista": {
+        "elementos": [
+          "Gestión pasiva",
+          "Inversiones automatizadas",
+          "Planificación a largo plazo"
+        ],
+        "ejemplo": "Inversor con cartera indexada"
+      }
+    },
+    "escalabilidad": {
+      "trabajador_dependiente": {
+        "elementos": [
+          "Ascensos laborales",
+          "Especialización",
+          "Certificaciones"
+        ],
+        "ejemplo": "Técnico que se certifica como especialista"
+      },
+      "contratista_independiente": {
+        "elementos": [
+          "Creación de marca personal",
+          "Red de colaboradores",
+          "Servicios premium"
+        ],
+        "ejemplo": "Diseñador que crea curso online"
+      },
+      "creador_negocio": {
+        "elementos": [
+          "Expansión geográfica",
+          "Franquicias",
+          "Nuevos mercados"
+        ],
+        "ejemplo": "Tienda local que abre sucursales"
+      },
+      "inversionista": {
+        "elementos": [
+          "Reinversión de dividendos",
+          "Apalancamiento",
+          "Diversificación internacional"
+        ],
+        "ejemplo": "Inversor que amplía portafolio"
+      }
+    },
+    "gestion_riesgos": {
+      "trabajador_dependiente": {
+        "elementos": [
+          "Seguro de desempleo",
+          "Ahorro de emergencia",
+          "Capacitación continua"
+        ],
+        "ejemplo": "Empleado con fondo de emergencia"
+      },
+      "contratista_independiente": {
+        "elementos": [
+          "Contratos a largo plazo",
+          "Seguro profesional",
+          "Red de contactos"
+        ],
+        "ejemplo": "Arquitecto con seguro de responsabilidad"
+      },
+      "creador_negocio": {
+        "elementos": [
+          "Seguros empresariales",
+          "Fondo de contingencia",
+          "Diversificación de proveedores"
+        ],
+        "ejemplo": "Empresa con plan de contingencia"
+      },
+      "inversionista": {
+        "elementos": [
+          "Stop loss",
+          "Cobertura de riesgos",
+          "Rebalanceo periódico"
+        ],
+        "ejemplo": "Inversor con estrategia de protección"
+      }
+    },
+    "desarrollo_activos": {
+      "trabajador_dependiente": {
+        "elementos": [
+          "Plan de pensiones",
+          "Inversiones paralelas",
+          "Desarrollo de habilidades"
+        ],
+        "ejemplo": "Empleado invirtiendo en ETFs"
+      },
+      "contratista_independiente": {
+        "elementos": [
+          "Propiedad intelectual",
+          "Base de clientes",
+          "Metodologías propias"
+        ],
+        "ejemplo": "Consultor que desarrolla software"
+      },
+      "creador_negocio": {
+        "elementos": [
+          "Activos físicos",
+          "Marca registrada",
+          "Procesos optimizados"
+        ],
+        "ejemplo": "Startup con patentes"
+      },
+      "inversionista": {
+        "elementos": [
+          "Compra de activos",
+          "Generación de rentas",
+          "Apreciación de capital"
+        ],
+        "ejemplo": "Inversor inmobiliario"
+      }
+    }
+  }
+}
