@@ -87,9 +87,9 @@
       },
       "creador_negocio": {
         "elementos": [
-          "Expansión geográfica",
-          "Franquicias",
-          "Nuevos mercados"
+          "(1) Expansión geográfica, permitira que el creador instale su negocio en otras ciudades o paises",
+          "(2) Franquicias, son negocios con el mismo nombre del creador que ya son reconocidos y el creador gana un porcentaje de las utilidades",
+          "(3) Nuevos mercados, crear el mismo negocio para consumidores diferentes a los actuales esto incrementa los ingresos"
         ],
         "ejemplo": "Tienda local que abre sucursales"
       },
