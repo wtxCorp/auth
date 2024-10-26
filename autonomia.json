@@ -1,4 +1,4 @@
-{
+creador de negocio{
   "caracteristicas_autonomia": {
     "diversificacion_ingresos": {
       "trabajador_dependiente": {
@@ -91,7 +91,7 @@
           "(2) Franquicias, son negocios con el mismo nombre del creador que ya son reconocidos y el creador gana un porcentaje de las utilidades",
           "(3) Nuevos mercados, crear el mismo negocio para consumidores diferentes a los actuales esto incrementa los ingresos"
         ],
-        "ejemplo": "Tienda local que abre sucursales"
+        "ejemplo": "El creador de negocio crea una Tienda local que abre sucursales en una ciudad de origen y para crecer o escalar abre tiendas en otras ciudades, alquila el nombre de la tienda para franquicias y consige un producto especial para ancianos que viven cerca a donde tiene sus tiendas"
       },
       "inversionista": {
         "elementos": [
