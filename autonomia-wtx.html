@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Desarrollo de Autonomía para Estudiantes Innovadores</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .fase-content {
+            display: none;
+        }
+        .fase-content.active {
+            display: block;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .fase-btn.active {
+            background-color: #4f46e5;
+            color: white;
+        }
+        .tab-btn.active {
+            border-bottom: 2px solid #4f46e5;
+            color: #4f46e5;
+        }
+        .historia-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .historia-container.active {
+            max-height: 1500px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-6xl mx-auto p-4">
+        <header class="bg-indigo-800 text-white p-6 rounded-t-lg">
+            <h1 class="text-3xl font-bold mb-2" id="titulo">Programa de Desarrollo de Autonomía para Estudiantes Innovadores</h1>
+            <p class="text-indigo-100" id="descripcion-general">El programa está estructurado en cuatro fases principales, cada una enfocada en un aspecto crítico para el desarrollo de autonomía profesional en estudiantes innovadores</p>
+        </header>
+        
+        <main class="bg-white border-x border-b border-gray-200 p-6 rounded-b-lg mb-6 shadow-md">
+            <!-- Tabs Navigation -->
+            <div class="mb-6">
+                <div class="flex space-x-4 border-b border-gray-200">
+                    <button class="tab-btn active px-4 py-2 font-medium" data-tab="general">Vista General</button>
+                    <button class="tab-btn px-4 py-2 font-medium" data-tab="fases">Fases Detalladas</button>
+                    <button class="tab-btn px-4 py-2 font-medium" data-tab="evaluacion">Evaluación</button>
+                    <button class="tab-btn px-4 py-2 font-medium" data-tab="reflexiones">Mis Reflexiones</button>
+                </div>
+            </div>
+            
+            <!-- General Tab -->
+            <div class="tab-content active" id="general-tab">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Estructura General</h2>
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-700">Fases del Programa:</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-indigo-50 rounded-lg flex items-center">
+                            <div class="bg-indigo-700 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                1
+                            </div>
+                            <span class="text-gray-800">Diferenciación del Prototipo</span>
+                        </div>
+                        <div class="p-4 bg-indigo-50 rounded-lg flex items-center">
+                            <div class="bg-indigo-700 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                2
+                            </div>
+                            <span class="text-gray-800">Sostenibilidad del Prototipo</span>
+                        </div>
+                        <div class="p-4 bg-indigo-50 rounded-lg flex items-center">
+                            <div class="bg-indigo-700 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                3
+                            </div>
+                            <span class="text-gray-800">Rutas de Integración e Implementación del Prototipo</span>
+                        </div>
+                        <div class="p-4 bg-indigo-50 rounded-lg flex items-center">
+                            <div class="bg-indigo-700 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                4
+                            </div>
+                            <span class="text-gray-800">Consideraciones Legales de Cada Ruta de Integración</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-700">Conclusión:</h3>
+                    <p class="text-gray-700" id="conclusion">El programa ofrece un marco integral para guiar a estudiantes innovadores en la transición de un prototipo a soluciones sostenibles y con impacto. La combinación de narrativas inspiradoras con consideraciones prácticas crea un recurso valioso para desarrollar autonomía profesional en contextos de innovación.</p>
+                </div>
+            </div>
+            
+            <!-- Fases Tab -->
+            <div class="tab-content" id="fases-tab">
+                <div class="mb-5 flex flex-wrap gap-2">
+                    <button class="fase-btn active px-4 py-2 rounded-md text-sm font-medium" data-fase="1">Fase 1</button>
+                    <button class="fase-btn px-4 py-2 rounded-md text-sm font-medium" data-fase="2">Fase 2</button>
+                    <button class="fase-btn px-4 py-2 rounded-md text-sm font-medium" data-fase="3">Fase 3</button>
+                    <button class="fase-btn px-4 py-2 rounded-md text-sm font-medium" data-fase="4">Fase 4</button>
+                </div>
+                
+                <!-- Fase 1 -->
+                <div class="fase-content active" id="fase-1">
+                    <div class="mb-6 p-5 border border-gray-200 rounded-lg bg-white">
+                        <h3 class="text-xl font-bold mb-3 text-indigo-700">Fase 1: Diferenciación del Prototipo</h3>
+                        <p class="mb-4 text-gray-600">Esta fase introduce cinco elementos clave para diferenciar una solución innovadora</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2 text-gray-800">Elementos:</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Propósito auténtico</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="proposito">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Conectar el proyecto con motivaciones personales profundas</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-proposito">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Enfoque cultural</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="cultural">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Integrar el contexto y conocimiento cultural local</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-cultural">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Experiencia transformadora</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="transformadora">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Crear cambios significativos más allá de la funcionalidad básica</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-transformadora">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Accesibilidad</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="accesibilidad">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Eliminar barreras para usuarios diversos</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-accesibilidad">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Comunidad</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="comunidad">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Fomentar conexiones significativas entre usuarios</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-comunidad">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Añadido: Espacio para reflexión -->
+                        <div class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <h4 class="font-semibold mb-3 text-yellow-800">Mi Reflexión - Fase 4</h4>
+                            <div id="preguntas-fase4" class="mb-3 text-sm text-gray-600">
+                                <!-- Preguntas cargadas dinámicamente desde el JSON -->
+                            </div>
+                            <textarea id="reflexion-fase4" class="w-full p-3 border border-yellow-300 rounded-lg h-32" placeholder="Reflexiona sobre las consideraciones legales más relevantes para tu caso..."></textarea>
+                            <button class="mt-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 save-reflexion" data-fase="4">Guardar reflexión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Evaluación Tab -->
+            <div class="tab-content" id="evaluacion-tab">
+                <div class="mb-6 p-5 border border-gray-200 rounded-lg bg-white">
+                    <h3 class="text-xl font-bold mb-3 text-indigo-700">Evaluación de Aprendizaje</h3>
+                    <p class="mb-6 text-gray-600">Esta sección te permite evaluar tu progreso en cada fase del programa.</p>
+                    
+                    <div class="space-y-8">
+                        <!-- Fase 1 Evaluación -->
+                        <div class="p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-indigo-800">Fase 1: Diferenciación del Prototipo</h4>
+                            <div class="space-y-4">
+                                <div class="evaluacion-pregunta" data-fase="1" data-pregunta="1">
+                                    <p class="font-medium text-gray-700 mb-2">¿Puedes identificar claramente el propósito auténtico de tu prototipo?</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p1" value="1" class="mr-2">
+                                            <span>Muy poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p1" value="2" class="mr-2">
+                                            <span>Poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p1" value="3" class="mr-2">
+                                            <span>Parcialmente</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p1" value="4" class="mr-2">
+                                            <span>Bastante</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p1" value="5" class="mr-2">
+                                            <span>Completamente</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="evaluacion-pregunta" data-fase="1" data-pregunta="2">
+                                    <p class="font-medium text-gray-700 mb-2">¿Has considerado la accesibilidad de tu solución para diversos usuarios?</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p2" value="1" class="mr-2">
+                                            <span>Muy poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p2" value="2" class="mr-2">
+                                            <span>Poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p2" value="3" class="mr-2">
+                                            <span>Parcialmente</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p2" value="4" class="mr-2">
+                                            <span>Bastante</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase1-p2" value="5" class="mr-2">
+                                            <span>Completamente</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fase 2 Evaluación -->
+                        <div class="p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-indigo-800">Fase 2: Sostenibilidad del Prototipo</h4>
+                            <div class="space-y-4">
+                                <div class="evaluacion-pregunta" data-fase="2" data-pregunta="1">
+                                    <p class="font-medium text-gray-700 mb-2">¿Has identificado un modelo de sostenibilidad adecuado para tu prototipo?</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase2-p1" value="1" class="mr-2">
+                                            <span>Muy poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase2-p1" value="2" class="mr-2">
+                                            <span>Poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase2-p1" value="3" class="mr-2">
+                                            <span>Parcialmente</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase2-p1" value="4" class="mr-2">
+                                            <span>Bastante</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase2-p1" value="5" class="mr-2">
+                                            <span>Completamente</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fase 3 Evaluación -->
+                        <div class="p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-indigo-800">Fase 3: Rutas de Integración e Implementación</h4>
+                            <div class="space-y-4">
+                                <div class="evaluacion-pregunta" data-fase="3" data-pregunta="1">
+                                    <p class="font-medium text-gray-700 mb-2">¿Has determinado claramente qué ruta de implementación seguirás?</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase3-p1" value="1" class="mr-2">
+                                            <span>Muy poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase3-p1" value="2" class="mr-2">
+                                            <span>Poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase3-p1" value="3" class="mr-2">
+                                            <span>Parcialmente</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase3-p1" value="4" class="mr-2">
+                                            <span>Bastante</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase3-p1" value="5" class="mr-2">
+                                            <span>Completamente</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fase 4 Evaluación -->
+                        <div class="p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-indigo-800">Fase 4: Consideraciones Legales</h4>
+                            <div class="space-y-4">
+                                <div class="evaluacion-pregunta" data-fase="4" data-pregunta="1">
+                                    <p class="font-medium text-gray-700 mb-2">¿Comprendes las implicaciones legales de la ruta que has elegido?</p>
+                                    <div class="flex space-x-4">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase4-p1" value="1" class="mr-2">
+                                            <span>Muy poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase4-p1" value="2" class="mr-2">
+                                            <span>Poco</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase4-p1" value="3" class="mr-2">
+                                            <span>Parcialmente</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase4-p1" value="4" class="mr-2">
+                                            <span>Bastante</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="fase4-p1" value="5" class="mr-2">
+                                            <span>Completamente</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-center">
+                        <button id="guardar-evaluacion" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Guardar evaluación</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mis Reflexiones Tab -->
+            <div class="tab-content" id="reflexiones-tab">
+                <div class="mb-6 p-5 border border-gray-200 rounded-lg bg-white">
+                    <h3 class="text-xl font-bold mb-3 text-indigo-700">Mis Reflexiones</h3>
+                    <p class="mb-6 text-gray-600">Aquí puedes ver todas tus reflexiones sobre el programa.</p>
+                    
+                    <div class="space-y-6">
+                        <!-- Fase 1 Reflexión -->
+                        <div class="p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-indigo-800">Fase 1: Diferenciación del Prototipo</h4>
+                            <div id="reflexion-guardada-fase1" class="p-3 bg-white rounded-lg border border-indigo-100 min-h-16">
+                                <p class="text-gray-500 italic">No has guardado ninguna reflexión para esta fase.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Fase 2 Reflexión -->
+                        <div class="p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-indigo-800">Fase 2: Sostenibilidad del Prototipo</h4>
+                            <div id="reflexion-guardada-fase2" class="p-3 bg-white rounded-lg border border-indigo-100 min-h-16">
+                                <p class="text-gray-500 italic">No has guardado ninguna reflexión para esta fase.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Fase 3 Reflexión -->
+                        <div class="p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-indigo-800">Fase 3: Rutas de Integración e Implementación</h4>
+                            <div id="reflexion-guardada-fase3" class="p-3 bg-white rounded-lg border border-indigo-100 min-h-16">
+                                <p class="text-gray-500 italic">No has guardado ninguna reflexión para esta fase.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Fase 4 Reflexión -->
+                        <div class="p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-indigo-800">Fase 4: Consideraciones Legales</h4>
+                            <div id="reflexion-guardada-fase4" class="p-3 bg-white rounded-lg border border-indigo-100 min-h-16">
+                                <p class="text-gray-500 italic">No has guardado ninguna reflexión para esta fase.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                        <h4 class="font-semibold mb-3 text-yellow-800">Conclusión Personal</h4>
+                        <textarea id="reflexion-conclusion" class="w-full p-3 border border-yellow-300 rounded-lg h-32" placeholder="Reflexiona sobre todo lo aprendido en el programa y cómo lo aplicarás..."></textarea>
+                        <button id="guardar-conclusion" class="mt-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700">Guardar conclusión</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // URL para cargar el JSON de GitHub raw
+        const jsonUrl = 'https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/autonomia-data.json';
+        
+        // Datos para almacenar localmente
+        let programData = {
+            historias: {},
+            preguntas: {},
+            reflexiones: {
+                fase1: '',
+                fase2: '',
+                fase3: '',
+                fase4: '',
+                conclusion: ''
+            },
+            evaluacion: {}
+        };
+        
+        // Cargar datos desde localStorage si existen
+        function cargarDatosLocales() {
+            const savedData = localStorage.getItem('autonomia-data');
+            if (savedData) {
+                const parsedData = JSON.parse(savedData);
+                if (parsedData.reflexiones) {
+                    programData.reflexiones = parsedData.reflexiones;
+                    
+                    // Mostrar reflexiones guardadas
+                    for (let i = 1; i <= 4; i++) {
+                        const reflexionKey = `fase${i}`;
+                        const reflexion = programData.reflexiones[reflexionKey];
+                        if (reflexion && reflexion.trim() !== '') {
+                            $(`#reflexion-guardada-fase${i}`).html(`<p class="text-gray-700">${reflexion}</p>`);
+                            $(`#reflexion-fase${i}`).val(reflexion);
+                        }
+                    }
+                    
+                    if (programData.reflexiones.conclusion && programData.reflexiones.conclusion.trim() !== '') {
+                        $('#reflexion-conclusion').val(programData.reflexiones.conclusion);
+                    }
+                }
+                
+                if (parsedData.evaluacion) {
+                    programData.evaluacion = parsedData.evaluacion;
+                    
+                    // Marcar evaluaciones guardadas
+                    Object.keys(programData.evaluacion).forEach(key => {
+                        const [fase, pregunta] = key.split('-');
+                        $(`input[name="${fase}-p${pregunta}"][value="${programData.evaluacion[key]}"]`).prop('checked', true);
+                    });
+                }
+            }
+        }
+        
+        // Guardar datos en localStorage
+        function guardarDatosLocales() {
+            localStorage.setItem('autonomia-data', JSON.stringify(programData));
+        }
+        
+        // Cargar JSON desde GitHub
+        function cargarJSON() {
+            $.getJSON(jsonUrl)
+                .done(function(data) {
+                    if (data.historias) {
+                        programData.historias = data.historias;
+                    }
+                    if (data.preguntas) {
+                        programData.preguntas = data.preguntas;
+                        cargarPreguntas();
+                    }
+                })
+                .fail(function() {
+                    console.error("Error al cargar el JSON");
+                    
+                    // Datos de muestra en caso de fallo
+                    programData.historias = {
+                        "proposito": "Historia de ejemplo sobre propósito auténtico...",
+                        "cultural": "Historia de ejemplo sobre enfoque cultural...",
+                        // Otras historias de ejemplo...
+                    };
+                    
+                    programData.preguntas = {
+                        "fase1": [
+                            "¿Cómo refleja tu prototipo un propósito auténtico?",
+                            "¿Qué elementos culturales has integrado en tu solución?"
+                        ],
+                        "fase2": [
+                            "¿Qué modelo de sostenibilidad se ajusta mejor a tu prototipo y por qué?"
+                        ],
+                        "fase3": [
+                            "¿Cuál de las tres rutas de implementación es más adecuada para tu caso?"
+                        ],
+                        "fase4": [
+                            "¿Cuáles son las principales consideraciones legales que debes tener en cuenta?"
+                        ]
+                    };
+                    
+                    cargarPreguntas();
+                });
+        }
+        
+        // Cargar preguntas para reflexiones
+        function cargarPreguntas() {
+            Object.keys(programData.preguntas).forEach(fase => {
+                let preguntasHTML = '<ul class="list-disc pl-5">';
+                programData.preguntas[fase].forEach(pregunta => {
+                    preguntasHTML += `<li>${pregunta}</li>`;
+                });
+                preguntasHTML += '</ul>';
+                $(`#preguntas-${fase}`).html(preguntasHTML);
+            });
+        }
+        
+        // Inicialización
+        $(document).ready(function() {
+            // Cargar JSON
+            cargarJSON();
+            
+            // Cargar datos locales
+            cargarDatosLocales();
+            
+            // Cambio de pestañas
+            $('.tab-btn').click(function() {
+                const tabId = $(this).data('tab');
+                $('.tab-btn').removeClass('active');
+                $(this).addClass('active');
+                $('.tab-content').removeClass('active');
+                $(`#${tabId}-tab`).addClass('active');
+            });
+            
+            // Cambio de fases
+            $('.fase-btn').click(function() {
+                const faseId = $(this).data('fase');
+                $('.fase-btn').removeClass('active');
+                $(this).addClass('active');
+                $('.fase-content').removeClass('active');
+                $(`#fase-${faseId}`).addClass('active');
+            });
+            
+            // Ver historias
+            $('.historia-btn').click(function() {
+                const historiaId = $(this).data('historia');
+                const container = $(`#historia-${historiaId}`);
+                
+                if (container.hasClass('active')) {
+                    container.removeClass('active');
+                    $(this).text('Ver historia');
+                } else {
+                    container.addClass('active');
+                    $(this).text('Ocultar historia');
+                    
+                    // Cargar historia si aún no se ha cargado
+                    if (container.find('.text-gray-600.italic').length > 0) {
+                        const historiaContenido = programData.historias[historiaId] || "No se ha podido cargar la historia.";
+                        container.html(`<p class="text-sm text-gray-700">${historiaContenido}</p>`);
+                    }
+                }
+            });
+            
+            // Guardar reflexiones
+            $('.save-reflexion').click(function() {
+                const fase = $(this).data('fase');
+                const contenido = $(`#reflexion-fase${fase}`).val();
+                programData.reflexiones[`fase${fase}`] = contenido;
+                
+                // Actualizar panel de reflexiones
+                $(`#reflexion-guardada-fase${fase}`).html(contenido ? `<p class="text-gray-700">${contenido}</p>` : '<p class="text-gray-500 italic">No has guardado ninguna reflexión para esta fase.</p>');
+                
+                guardarDatosLocales();
+                alert('Reflexión guardada correctamente');
+            });
+            
+            // Guardar conclusión
+            $('#guardar-conclusion').click(function() {
+                const conclusion = $('#reflexion-conclusion').val();
+                programData.reflexiones.conclusion = conclusion;
+                guardarDatosLocales();
+                alert('Conclusión guardada correctamente');
+            });
+            
+            // Guardar evaluación
+            $('#guardar-evaluacion').click(function() {
+                // Recopilar todas las evaluaciones marcadas
+                $('.evaluacion-pregunta').each(function() {
+                    const fase = $(this).data('fase');
+                    const pregunta = $(this).data('pregunta');
+                    const valor = $(`input[name="fase${fase}-p${pregunta}"]:checked`).val();
+                    
+                    if (valor) {
+                        programData.evaluacion[`fase${fase}-${pregunta}`] = valor;
+                    }
+                });
+                
+                guardarDatosLocales();
+                alert('Evaluación guardada correctamente');
+            });
+        });
+    </script>
+</body>
+</html>yellow-800">Mi Reflexión - Fase 1</h4>
+                            <div id="preguntas-fase1" class="mb-3 text-sm text-gray-600">
+                                <!-- Preguntas cargadas dinámicamente desde el JSON -->
+                            </div>
+                            <textarea id="reflexion-fase1" class="w-full p-3 border border-yellow-300 rounded-lg h-32" placeholder="Reflexiona sobre cómo puedes aplicar los elementos de diferenciación a tu propio prototipo..."></textarea>
+                            <button class="mt-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 save-reflexion" data-fase="1">Guardar reflexión</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fase 2 -->
+                <div class="fase-content" id="fase-2">
+                    <div class="mb-6 p-5 border border-gray-200 rounded-lg bg-white">
+                        <h3 class="text-xl font-bold mb-3 text-indigo-700">Fase 2: Sostenibilidad del Prototipo</h3>
+                        <p class="mb-4 text-gray-600">Esta fase explora diferentes modelos para hacer sostenibles los proyectos a largo plazo</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2 text-gray-800">Modelos:</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Modelo de cuota justa</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="cuota-justa">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Precios diferenciados según capacidad de pago</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-cuota-justa">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Modelo híbrido</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="hibrido">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Segmentos premium que subsidian acceso gratuito</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-hibrido">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Cooperativo</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="cooperativo">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Propiedad compartida entre usuarios/beneficiarios</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-cooperativo">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Productos/servicios complementarios</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="complementarios">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Monetización indirecta que mantiene el servicio principal</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-complementarios">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Alianzas estratégicas</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="alianzas">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700">Colaboraciones que alinean intereses comerciales y sociales</p>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-alianzas">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Añadido: Espacio para reflexión -->
+                        <div class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <h4 class="font-semibold mb-3 text-yellow-800">Mi Reflexión - Fase 2</h4>
+                            <div id="preguntas-fase2" class="mb-3 text-sm text-gray-600">
+                                <!-- Preguntas cargadas dinámicamente desde el JSON -->
+                            </div>
+                            <textarea id="reflexion-fase2" class="w-full p-3 border border-yellow-300 rounded-lg h-32" placeholder="Reflexiona sobre cuáles modelos de sostenibilidad podrían funcionar mejor para tu prototipo..."></textarea>
+                            <button class="mt-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 save-reflexion" data-fase="2">Guardar reflexión</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fase 3 -->
+                <div class="fase-content" id="fase-3">
+                    <div class="mb-6 p-5 border border-gray-200 rounded-lg bg-white">
+                        <h3 class="text-xl font-bold mb-3 text-indigo-700">Fase 3: Rutas de Integración e Implementación</h3>
+                        <p class="mb-4 text-gray-600">El programa presenta tres rutas principales para implementar una solución innovadora</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2 text-gray-800">Rutas:</h4>
+                            <div class="space-y-4">
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Ruta 1: Integración dentro de una organización (empleado)</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="empleado">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <ul class="list-disc pl-6 mt-2">
+                                        <li class="text-sm text-gray-700">Preparación del caso de negocio</li>
+                                        <li class="text-sm text-gray-700">Navegación organizacional</li>
+                                        <li class="text-sm text-gray-700">Presentación y negociación</li>
+                                        <li class="text-sm text-gray-700">Implementación y escalamiento</li>
+                                        <li class="text-sm text-gray-700">Consideraciones de propiedad intelectual</li>
+                                    </ul>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-empleado">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Ruta 2: Colaboración externa (contrato)</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="contrato">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <ul class="list-disc pl-6 mt-2">
+                                        <li class="text-sm text-gray-700">Propuesta de valor y contratación</li>
+                                        <li class="text-sm text-gray-700">Gestión de relaciones a largo plazo</li>
+                                        <li class="text-sm text-gray-700">Diversificación de clientes</li>
+                                    </ul>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-contrato">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Ruta 3: Nueva organización (emprendimiento)</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="emprendimiento">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <ul class="list-disc pl-6 mt-2">
+                                        <li class="text-sm text-gray-700">Validación del modelo de negocio</li>
+                                        <li class="text-sm text-gray-700">Estructuración legal estratégica</li>
+                                        <li class="text-sm text-gray-700">Del MVP al producto viable</li>
+                                        <li class="text-sm text-gray-700">Financiamiento alineado a valores</li>
+                                        <li class="text-sm text-gray-700">Formación de equipo fundador</li>
+                                    </ul>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-emprendimiento">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Añadido: Espacio para reflexión -->
+                        <div class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <h4 class="font-semibold mb-3 text-yellow-800">Mi Reflexión - Fase 3</h4>
+                            <div id="preguntas-fase3" class="mb-3 text-sm text-gray-600">
+                                <!-- Preguntas cargadas dinámicamente desde el JSON -->
+                            </div>
+                            <textarea id="reflexion-fase3" class="w-full p-3 border border-yellow-300 rounded-lg h-32" placeholder="Reflexiona sobre qué ruta de implementación es más adecuada para tu innovación..."></textarea>
+                            <button class="mt-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 save-reflexion" data-fase="3">Guardar reflexión</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fase 4 -->
+                <div class="fase-content" id="fase-4">
+                    <div class="mb-6 p-5 border border-gray-200 rounded-lg bg-white">
+                        <h3 class="text-xl font-bold mb-3 text-indigo-700">Fase 4: Consideraciones Legales</h3>
+                        <p class="mb-4 text-gray-600">Esta fase aborda los aspectos legales cruciales para cada ruta de implementación</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2 text-gray-800">Consideraciones por ruta:</h4>
+                            <div class="space-y-4">
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Para empleados</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="legal-empleado">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <ul class="list-disc pl-6 mt-2">
+                                        <li class="text-sm text-gray-700">Propiedad intelectual en relación laboral</li>
+                                        <li class="text-sm text-gray-700">Acuerdos de no competencia</li>
+                                    </ul>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-legal-empleado">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Para contratistas</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="legal-contratista">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <ul class="list-disc pl-6 mt-2">
+                                        <li class="text-sm text-gray-700">Contratos claros y detallados</li>
+                                        <li class="text-sm text-gray-700">Protección de responsabilidad y seguros</li>
+                                    </ul>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-legal-contratista">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-indigo-50 rounded-lg">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h5 class="font-semibold text-indigo-800">Para emprendedores</h5>
+                                        <button class="historia-btn text-indigo-600 hover:text-indigo-800 text-sm" data-historia="legal-emprendedor">
+                                            Ver historia
+                                        </button>
+                                    </div>
+                                    <ul class="list-disc pl-6 mt-2">
+                                        <li class="text-sm text-gray-700">Derechos de autor y registro de software</li>
+                                        <li class="text-sm text-gray-700">Estructura societaria y protección patrimonial</li>
+                                        <li class="text-sm text-gray-700">Acuerdos entre socios</li>
+                                    </ul>
+                                    
+                                    <div class="historia-container mt-3 border-t border-indigo-200 pt-3" id="historia-legal-emprendedor">
+                                        <div class="text-sm text-gray-600 italic">Cargando historia...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Añadido: Espacio para reflexión -->
+                        <div class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <h4 class="font-semibold mb-3 text-
